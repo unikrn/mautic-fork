@@ -88,6 +88,9 @@ class Campaign extends FormEntity
      */
     private $allowRestart = false;
 
+    /** @var bool */
+    private $triggerRealtime = false;
+
     /**
      * Constructor.
      */
@@ -160,6 +163,8 @@ class Campaign extends FormEntity
             ->build();
 
         $builder->addNamedField('allowRestart', 'integer', 'allow_restart');
+
+        $builder->addNamedField('triggerRealtime', 'boolean', 'trigger_realtime');
     }
 
     /**
@@ -665,5 +670,35 @@ class Campaign extends FormEntity
                     )
                     ->orderBy(['dateAdded' => Criteria::DESC])
         );
+    }
+
+    /**
+     * @param bool $triggerRealtime
+     *
+     * @return Campaign
+     */
+    public function setTriggerRealtime($triggerRealtime)
+    {
+        $this->isChanged('triggerRealtime', $triggerRealtime);
+
+        $this->triggerRealtime = $triggerRealtime;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getTriggerRealtime()
+    {
+        return $this->isTriggerRealtime();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTriggerRealtime()
+    {
+        return $this->triggerRealtime;
     }
 }
