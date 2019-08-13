@@ -64,12 +64,14 @@
 !/plugins/MauticCrmBundle
 !/plugins/MauticDynamicsBundle
 !/plugins/MauticEmailMarketingBundle
+!/plugins/MauticExtendedFieldBundle
 !/plugins/MauticFocusBundle
 !/plugins/MauticFullContactBundle
 !/plugins/MauticGmailBundle
 !/plugins/MauticOutlookBundle
 !/plugins/MauticSocialBundle
 !/plugins/MauticZapierBundle
+!/plugins/ThirdSetMauticTimingBundle
 !/plugins/index.html
 
 /themes/*
