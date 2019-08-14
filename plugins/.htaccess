@@ -1,5 +1,5 @@
-ServerSignature Off
+erverSignature Off
 Order Allow,Deny
-<FilesMatch "^.+\.(css|js|png)$">
+<FilesMatch "^.+\.png$">
 Allow from all
 </FilesMatch>
