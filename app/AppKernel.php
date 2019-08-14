@@ -41,7 +41,7 @@ class AppKernel extends Kernel
      *
      * @const integer
      */
-    const PATCH_VERSION = 3;
+    const PATCH_VERSION = 1;
 
     /**
      * Extra version identifier.
@@ -82,9 +82,9 @@ class AppKernel extends Kernel
      */
     public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
     {
-        if (strpos($request->getRequestUri(), 'installer') !== false || !$this->isInstalled()) {
-            defined('MAUTIC_INSTALLER') or define('MAUTIC_INSTALLER', 1);
-        }
+//        if (strpos($request->getRequestUri(), 'installer') !== false || !$this->isInstalled()) {
+//            define('MAUTIC_INSTALLER', 1);
+//        }
 
         if (defined('MAUTIC_INSTALLER')) {
             $uri = $request->getRequestUri();
@@ -527,9 +527,7 @@ class AppKernel extends Kernel
 
         // Warm up the cache if classes.php is missing or in dev mode
         if (!$fresh && $this->container->has('cache_warmer')) {
-            $warmer = $this->container->get('cache_warmer');
-            $warmer->enableOptionalWarmers();
-            $warmer->warmUp($this->container->getParameter('kernel.cache_dir'));
+            $this->container->get('cache_warmer')->warmUp($this->container->getParameter('kernel.cache_dir'));
         }
     }
 
