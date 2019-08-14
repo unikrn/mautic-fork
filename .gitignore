@@ -73,6 +73,7 @@
 !/plugins/MauticZapierBundle
 !/plugins/ThirdSetMauticTimingBundle
 !/plugins/index.html
+!/plugins/.htaccess
 
 /themes/*
 !/themes/aurora
