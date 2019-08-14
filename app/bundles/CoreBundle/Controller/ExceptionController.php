@@ -29,6 +29,10 @@ class ExceptionController extends CommonController
     {
         $class = $exception->getClass();
 
+        if (function_exists('newrelic_notice_error')) {
+            newrelic_notice_error($exception);
+        }
+
         //ignore authentication exceptions
         if (strpos($class, 'Authentication') === false) {
             $env            = $this->factory->getEnvironment();
