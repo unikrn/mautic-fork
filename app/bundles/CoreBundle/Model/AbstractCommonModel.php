@@ -290,7 +290,7 @@ abstract class AbstractCommonModel
         $url           = $this->router->generate($route, $routeParams, $referenceType);
 
         $url .= (!empty($clickthrough)) ? '?ct='.$this->encodeArrayForUrl($clickthrough) : '';
-        if ($this->coreParametersHelper->getParameter('force_https') && $absolute && strpos($url, 'http://') === 0)
+        if ($this->coreParametersHelper->getParameter('force_https', false) && $absolute && strpos($url, 'http://') === 0)
             $url = str_replace('http://','https://',$url);
         return $url;
     }
