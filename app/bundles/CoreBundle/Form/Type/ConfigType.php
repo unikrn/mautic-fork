@@ -604,10 +604,10 @@ class ConfigType extends AbstractType
 
         $builder->add(
             'force_https',
-            'text',
+            'yesno_button_group',
             [
                 'label'      => 'mautic.core.config.form.force_https',
-                'label_attr' => ['class' => 'control-label'],
+                'data'  => (array_key_exists('force_https', $options['data']) && !empty($options['data']['force_https'])),
                 'attr'       => [
                     'class'   => 'form-control',
                     'tooltip' => 'mautic.core.config.form.force_https.tooltip',
