@@ -603,6 +603,20 @@ class ConfigType extends AbstractType
         );
 
         $builder->add(
+            'force_https',
+            'text',
+            [
+                'label'      => 'mautic.core.config.form.force_https',
+                'label_attr' => ['class' => 'control-label'],
+                'attr'       => [
+                    'class'   => 'form-control',
+                    'tooltip' => 'mautic.core.config.form.force_https.tooltip',
+                ],
+                'required' => false,
+            ]
+        );
+
+        $builder->add(
             'max_entity_lock_time',
             'number',
             [
