@@ -247,7 +247,10 @@ abstract class AbstractCommonModel
         $referenceType = ($absolute) ? UrlGeneratorInterface::ABSOLUTE_URL : UrlGeneratorInterface::ABSOLUTE_PATH;
         $url           = $this->router->generate($route, $routeParams, $referenceType);
 
-        return $url.((!empty($clickthrough)) ? '?ct='.$this->encodeArrayForUrl($clickthrough) : '');
+        $url .= (!empty($clickthrough)) ? '?ct='.$this->encodeArrayForUrl($clickthrough) : '';
+        if ($this->get('mautic.helper.core_parameters')->getParameter('force_https') && $absolute && strpos($url, 'http://') === 0)
+            $url = str_replace('http://','https://',$url);
+        return $url;
     }
 
     /**
