@@ -272,9 +272,15 @@ class ContactTracker
     /**
      * @return Lead|null
      */
-    private function getContactByTrackedDevice()
+    public function getContactByTrackedDevice()
     {
         $lead = null;
+
+        // Return null for leads that are from a non-trackable IP, prevent anonymous lead with a non-trackable IP to be tracked
+        $ip = $this->ipLookupHelper->getIpAddress();
+        if ($ip && !$ip->isTrackable()) {
+            return $lead;
+        }
 
         // Is there a device being tracked?
         if ($trackedDevice = $this->deviceTracker->getTrackedDevice()) {
