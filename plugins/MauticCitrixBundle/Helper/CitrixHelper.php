@@ -319,7 +319,7 @@ class CitrixHelper
     {
         try {
             $response = [];
-            if (CitrixProducts::GOTOWEBINAR === $product) {
+            if ($product === CitrixProducts::GOTOWEBINAR) {
                 $params = [
                     'email'     => $email,
                     'firstName' => $firstname,
@@ -332,7 +332,7 @@ class CitrixHelper
                     'POST'
                 );
             } else {
-                if (CitrixProducts::GOTOTRAINING === $product) {
+                if ($product === CitrixProducts::GOTOTRAINING) {
                     $params = [
                         'email'     => $email,
                         'givenName' => $firstname,
@@ -368,21 +368,21 @@ class CitrixHelper
     public static function startToProduct($product, $productId, $email, $firstname, $lastname)
     {
         try {
-            if (CitrixProducts::GOTOMEETING === $product) {
+            if ($product === CitrixProducts::GOTOMEETING) {
                 $response = self::getG2mApi()->request(
                     'meetings/'.$productId.'/start'
                 );
 
                 return (is_array($response) && array_key_exists('hostURL', $response)) ? $response['hostURL'] : '';
             } else {
-                if (CitrixProducts::GOTOTRAINING === $product) {
+                if ($product === CitrixProducts::GOTOTRAINING) {
                     $response = self::getG2tApi()->request(
                         'trainings/'.$productId.'/start'
                     );
 
                     return (is_array($response) && array_key_exists('hostURL', $response)) ? $response['hostURL'] : '';
                 } else {
-                    if (CitrixProducts::GOTOASSIST === $product) {
+                    if ($product === CitrixProducts::GOTOASSIST) {
                         // TODO: use the sessioncallback to update attendance status
                         /** @var Router $router */
                         $router = self::getContainer()->get('router');
