@@ -41,7 +41,7 @@ class AppKernel extends Kernel
      *
      * @const integer
      */
-    const PATCH_VERSION = 1;
+    const PATCH_VERSION = 3;
 
     /**
      * Extra version identifier.
@@ -70,7 +70,7 @@ class AppKernel extends Kernel
     {
         defined('MAUTIC_ENV') or define('MAUTIC_ENV', $environment);
         defined('MAUTIC_VERSION') or define(
-            'MAUTIC_VERSION',
+            'xMAUTIC_VERSION',
             self::MAJOR_VERSION.'.'.self::MINOR_VERSION.'.'.self::PATCH_VERSION.self::EXTRA_VERSION
         );
 
