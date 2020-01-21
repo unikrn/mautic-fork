@@ -70,7 +70,7 @@ class AppKernel extends Kernel
     {
         defined('MAUTIC_ENV') or define('MAUTIC_ENV', $environment);
         defined('MAUTIC_VERSION') or define(
-            'xMAUTIC_VERSION',
+            'MAUTIC_VERSION',
             self::MAJOR_VERSION.'.'.self::MINOR_VERSION.'.'.self::PATCH_VERSION.self::EXTRA_VERSION
         );
 
