@@ -66,10 +66,6 @@ return [
                     'doctrine.orm.entity_manager',
                 ],
             ],
-            'mautic.citrix.integration.request' => [
-                'class'     => \MauticPlugin\MauticCitrixBundle\EventListener\IntegrationRequestSubscriber::class,
-                'arguments' => [],
-            ],
         ],
         'forms' => [
             'mautic.form.type.fieldslist.citrixlist' => [
