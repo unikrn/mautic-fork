@@ -59,14 +59,12 @@ composer.lock
 !/media/images/.htaccess
 
 /plugins/*
-!/plugins/MauticAdvancedTemplatesBundle
 !/plugins/MauticCitrixBundle
 !/plugins/MauticClearbitBundle
 !/plugins/MauticCloudStorageBundle
 !/plugins/MauticCrmBundle
 !/plugins/MauticDynamicsBundle
 !/plugins/MauticEmailMarketingBundle
-!/plugins/MauticExtendedFieldBundle
 !/plugins/MauticFBAdsCustomAudiencesBundle
 !/plugins/MauticFocusBundle
 !/plugins/MauticFullContactBundle
