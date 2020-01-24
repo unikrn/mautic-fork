@@ -64,6 +64,7 @@
 !/plugins/MauticCrmBundle
 !/plugins/MauticDynamicsBundle
 !/plugins/MauticEmailMarketingBundle
+!/plugins/MauticFBAdsCustomAudiencesBundle
 !/plugins/MauticFocusBundle
 !/plugins/MauticFullContactBundle
 !/plugins/MauticGmailBundle
