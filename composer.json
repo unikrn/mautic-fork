@@ -113,7 +113,8 @@
         "ramsey/uuid": "^3.7",
         "sendgrid/sendgrid": "~6.0",
         "noxlogic/ratelimit-bundle": "^1.11",
-        "sensio/framework-extra-bundle": "~3.0"
+        "sensio/framework-extra-bundle": "~3.0",
+        "facebook/php-ads-sdk": "2.9.*"
     },
     "require-dev": {
         "symfony/web-profiler-bundle": "~2.8",
@@ -159,7 +160,8 @@
         "bin-dir": "bin",
         "platform": {
             "php": "5.6.19"
-        }
+        },
+        "cache-files-dir": "var/composer/"
     },
     "extra": {
         "symfony-app-dir": "app",
