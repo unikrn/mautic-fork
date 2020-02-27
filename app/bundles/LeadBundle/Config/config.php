@@ -317,6 +317,11 @@ return [
                 'controller' => 'MauticLeadBundle:Api\LeadApi:removeDnc',
                 'method'     => 'POST',
             ],
+            'bc_mautic_api_mergecontact' => [
+                'path'       => '/contacts/{id}/merge',
+                'controller' => 'MauticLeadBundle:Api\LeadApi:merge',
+                'method'     => 'POST',
+            ],
             // @deprecated 2.10.0 to be removed in 3.0
             'bc_mautic_api_getcontactevents' => [
                 'path'       => '/contacts/{id}/events',
