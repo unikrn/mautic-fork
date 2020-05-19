@@ -330,6 +330,7 @@ class ConfigType extends AbstractType
             ChoiceType::class,
             [
                 'choices'           => [
+                    'mautic.email.config.mailer.amazon_host.eu_central_1' => 'email-smtp.eu-central-1.amazonaws.com',
                     'mautic.email.config.mailer.amazon_host.eu_west_1' => 'email-smtp.eu-west-1.amazonaws.com',
                     'mautic.email.config.mailer.amazon_host.us_east_1' => 'email-smtp.us-east-1.amazonaws.com',
                     'mautic.email.config.mailer.amazon_host.eu_west_2' => 'email-smtp.us-west-2.amazonaws.com',
