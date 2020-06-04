@@ -5,6 +5,7 @@
 .php_cs.cache
 /.env
 /composer.phar
+composer.lock
 
 /app/bootstrap*
 /app/tests.bootstrap*
@@ -98,3 +99,5 @@
 !/themes/blank-big.png
 
 /translations
+
+/var/composer/*
