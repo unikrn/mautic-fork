@@ -73,7 +73,6 @@
 !/plugins/MauticOutlookBundle
 !/plugins/MauticSocialBundle
 !/plugins/MauticZapierBundle
-!/plugins/ThirdSetMauticTimingBundle
 !/plugins/index.html
 !/plugins/.htaccess
 
