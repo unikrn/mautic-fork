@@ -5,6 +5,8 @@
 .php_cs.cache
 /.env
 /composer.phar
+composer.lock
+
 .idea
 */.idea
 
