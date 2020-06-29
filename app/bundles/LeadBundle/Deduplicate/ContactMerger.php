@@ -68,11 +68,14 @@ class ContactMerger
     }
 
     /**
+     * @param Lead $winner
+     * @param Lead $loser
+     * @param boolean $save_tracking
      * @return Lead
      *
      * @throws SameContactException
      */
-    public function merge(Lead $winner, Lead $loser)
+    public function merge(Lead $winner, Lead $loser, $save_tracking = false)
     {
         if ($winner->getId() === $loser->getId()) {
             throw new SameContactException();
@@ -98,6 +101,9 @@ class ContactMerger
 
         // Dispatch post merge event
         $this->dispatcher->dispatch(LeadEvents::LEAD_POST_MERGE, $event);
+
+        if($save_tracking)
+            $this->mergeTracking($winner, $loser);
 
         // Delete the loser
         $this->leadModel->deleteEntity($loser);
@@ -259,6 +265,23 @@ class ContactMerger
         $this->leadModel->modifyTags($winner, $addTags, null, false);
 
         return $this;
+    }
+
+    /**
+     * @param Lead $winner
+     * @param Lead $loser
+     * @return Lead
+     *
+     */
+    public function mergeTracking(Lead $winner, Lead $loser){
+        $deviceRepo = $this->leadModel->getDeviceRepository();
+        /** @var LeadDevice $device */
+        $device = $deviceRepo->findOneBy(['lead' => $loser->getId()]);
+        if($device == null)
+            return;
+        $device->setLead($winner);
+        $deviceRepo->saveEntity($device);
+        $deviceRepo->clear();
     }
 
     /**

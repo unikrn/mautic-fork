@@ -479,7 +479,7 @@ class LeadApiController extends CommonApiController
 
         /** @var ContactMerger $contactMerger */
         $contactMerger = $this->container->get('mautic.lead.merger');
-        $entity = $contactMerger->merge($entity, $mergeLead);
+        $entity = $contactMerger->merge($entity, $mergeLead, true);
 
         $view = $this->view([$this->entityNameOne => $entity]);
         return $this->handleView($view);
