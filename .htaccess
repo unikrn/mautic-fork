@@ -25,6 +25,11 @@ Redirect 302 . /s
     Allow from all
 </Files>
 
+<Files mailer*>
+    Order Allow,Deny
+    Allow from all
+</Files>
+
 <Files email*>
     Order Allow,Deny
     Allow from all
