@@ -171,7 +171,7 @@ class ListApiController extends CommonApiController
         $minCount = $this->request->request->get('mincount', 0);
         $model   = $this->getModel('lead.list');
         $leadCounts = $model->getRepository()->getAllLeadlistCounts($minCount);
-        $view = $this->view(['success' => 1, 'data' => $leadCounts], Codes::HTTP_OK);
+        $view = $this->view(['success' => 1, 'data' => $leadCounts], Response::HTTP_OK);
         return $this->handleView($view);
     }
 
