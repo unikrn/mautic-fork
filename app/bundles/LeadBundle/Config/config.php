@@ -294,6 +294,10 @@ return [
                 'controller' => 'MauticLeadBundle:Api\ListApi:removeLead',
                 'method'     => 'POST',
             ],
+                'bc_mautic_api_segmentcounts' => [
+                'path'       => '/segments/leadcounts',
+                'controller' => 'MauticLeadBundle:Api\ListApi:leadCounts',
+            ],
             'bc_mautic_api_companyaddcontact' => [
                 'path'       => '/companies/{companyId}/contact/add/{contactId}',
                 'controller' => 'MauticLeadBundle:Api\CompanyApi:addContact',
