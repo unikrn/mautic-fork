@@ -164,7 +164,8 @@
     "config": {
         "bin-dir": "bin",
         "component-dir": "media/assets",
-        "process-timeout": 5000
+        "process-timeout": 5000,
+        "cache-files-dir": "var/composer/"
     },
     "extra": {
         "symfony-app-dir": "app",
