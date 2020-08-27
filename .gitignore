@@ -11,7 +11,7 @@ composer.lock
 */.idea
 
 /app/bootstrap*
-/app/console
+/bin/console
 /app/tests.bootstrap*
 /app/phpunit.xml
 
