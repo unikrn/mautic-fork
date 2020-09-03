@@ -13,9 +13,11 @@ namespace Mautic\LeadBundle\Deduplicate;
 
 use Mautic\CoreBundle\Helper\ArrayHelper;
 use Mautic\LeadBundle\Deduplicate\Exception\SameContactException;
+use Mautic\LeadBundle\Deduplicate\Exception\ExistingContactException;
 use Mautic\LeadBundle\Deduplicate\Exception\ValueNotMergeableException;
 use Mautic\LeadBundle\Deduplicate\Helper\MergeValueHelper;
 use Mautic\LeadBundle\Entity\Lead;
+use Mautic\LeadBundle\Entity\LeadDevice;
 use Mautic\LeadBundle\Entity\MergeRecord;
 use Mautic\LeadBundle\Entity\MergeRecordRepository;
 use Mautic\LeadBundle\Event\LeadMergeEvent;
@@ -74,11 +76,16 @@ class ContactMerger
      * @return Lead
      *
      * @throws SameContactException
+     * @throws ExistingContactException
      */
     public function merge(Lead $winner, Lead $loser, $save_tracking = false)
     {
         if ($winner->getId() === $loser->getId()) {
             throw new SameContactException();
+        }
+
+        if($loser->getEmail()){
+            throw new ExistingContactException();
         }
 
         $this->logger->debug('CONTACT: ID# '.$loser->getId().' will be merged into ID# '.$winner->getId());
@@ -264,7 +271,7 @@ class ContactMerger
     /**
      * @param Lead $winner
      * @param Lead $loser
-     * @return Lead
+     * @return void
      *
      */
     public function mergeTracking(Lead $winner, Lead $loser){
@@ -276,6 +283,7 @@ class ContactMerger
         $device->setLead($winner);
         $deviceRepo->saveEntity($device);
         $deviceRepo->clear();
+        return;
     }
 
     /**
