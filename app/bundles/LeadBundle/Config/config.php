@@ -280,6 +280,11 @@ return [
                 'path'            => '/tags',
                 'controller'      => 'MauticLeadBundle:Api\TagApi',
             ],
+            'bc_mautic_api_mergecontact' => [
+            'path'       => '/contacts/{id}/merge',
+            'controller' => 'MauticLeadBundle:Api\LeadApi:merge',
+            'method'     => 'POST',
+          ],
         ],
     ],
     'menu' => [
