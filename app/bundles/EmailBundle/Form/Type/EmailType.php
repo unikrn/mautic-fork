@@ -23,6 +23,7 @@ use Mautic\CoreBundle\Form\Type\FormButtonsType;
 use Mautic\CoreBundle\Form\Type\SortableListType;
 use Mautic\CoreBundle\Form\Type\ThemeListType;
 use Mautic\CoreBundle\Form\Type\YesNoButtonGroupType;
+use Mautic\CoreBundle\Helper\CoreParametersHelper;
 use Mautic\EmailBundle\Entity\Email;
 use Mautic\FormBundle\Form\Type\FormListType;
 use Mautic\LeadBundle\Form\Type\LeadListType;
@@ -48,6 +49,11 @@ class EmailType extends AbstractType
     use DynamicContentTrait;
 
     /**
+     * @var CoreParametersHelper
+     */
+    private $coreParametersHelper;
+
+    /**
      * @var TranslatorInterface
      */
     private $translator;
@@ -65,11 +71,13 @@ class EmailType extends AbstractType
     public function __construct(
         TranslatorInterface $translator,
         EntityManager $entityManager,
-        StageModel $stageModel
+        StageModel $stageModel,
+        CoreParametersHelper $coreParametersHelper
     ) {
-        $this->translator = $translator;
-        $this->em         = $entityManager;
-        $this->stageModel = $stageModel;
+        $this->translator           = $translator;
+        $this->em                   = $entityManager;
+        $this->stageModel           = $stageModel;
+        $this->coreParametersHelper = $coreParametersHelper;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -98,7 +106,7 @@ class EmailType extends AbstractType
                       ]
         );
 
-        if (!$this->factory->getParameter('mailer_enable'))
+        if($this->coreParametersHelper->get('convert_emojis_to_shortcodes'))
             $element->addModelTransformer($emojiTransformer);
 
         $builder->add($element);
