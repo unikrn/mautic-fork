@@ -88,17 +88,20 @@ class EmailType extends AbstractType
         );
 
         $emojiTransformer = new EmojiToShortTransformer();
-        $builder->add(
-            $builder->create(
+        $element = $builder->create(
                 'subject',
                 TextType::class,
-                [
-                    'label'      => 'mautic.email.subject',
-                    'label_attr' => ['class' => 'control-label'],
-                    'attr'       => ['class' => 'form-control'],
-                ]
-            )->addModelTransformer($emojiTransformer)
+                      [
+                        'label'      => 'mautic.email.subject',
+                        'label_attr' => ['class' => 'control-label'],
+                        'attr'       => ['class' => 'form-control'],
+                      ]
         );
+
+        if (!$this->factory->getParameter('mailer_enable'))
+            $element->addModelTransformer($emojiTransformer);
+
+        $builder->add($element);
 
         $builder->add(
             'fromName',
