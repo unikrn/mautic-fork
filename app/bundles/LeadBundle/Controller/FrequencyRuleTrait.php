@@ -177,7 +177,7 @@ trait FrequencyRuleTrait
                     $contactable = $leadModel->isContactable($lead, $contactChannel);
                     if (DoNotContact::UNSUBSCRIBED == $contactable || DoNotContact::MANUAL == $contactable) {
                         // Only resubscribe if the contact did not opt out themselves
-                        $leadModel->removeDncForLead($lead, $contactChannel);
+                        $dncModel->addDncForContact($lead->getId(), $contactChannel);
                     }
                 }
             }
