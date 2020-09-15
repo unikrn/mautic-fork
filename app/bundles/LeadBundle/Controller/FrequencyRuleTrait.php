@@ -174,7 +174,7 @@ trait FrequencyRuleTrait
         if (isset($this->request->request->get('lead_contact_frequency_rules')['lead_channels'])) {
             foreach ($formData['lead_channels']['subscribed_channels'] as $contactChannel) {
                 if (!isset($leadChannels[$contactChannel])) {
-                    $contactable = $leadModel->isContactable($lead, $contactChannel);
+                    $contactable = $dncModel->isContactable($lead, $contactChannel);
                     if (DoNotContact::UNSUBSCRIBED == $contactable || DoNotContact::MANUAL == $contactable) {
                         // Only resubscribe if the contact did not opt out themselves
                         $dncModel->addDncForContact($lead->getId(), $contactChannel);
@@ -189,6 +189,8 @@ trait FrequencyRuleTrait
                     }
                     $dncModel->addDncForContact($lead->getId(), $channel, ($this->isPublicView) ? DoNotContact::UNSUBSCRIBED : DoNotContact::MANUAL, 'user');
                 }
+            }else{
+                $dncModel->removeDncForContact($lead->getId(), $contactChannel);
             }
         }
         $leadModel->setFrequencyRules($lead, $formData, $this->leadLists);
