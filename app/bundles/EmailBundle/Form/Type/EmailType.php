@@ -466,7 +466,7 @@ class EmailType extends AbstractType
                 'attr'       => [
                     'class' => 'form-control',
                 ],
-                'required' => false,
+                'required' => true,
             ]
         );
 
@@ -486,6 +486,7 @@ class EmailType extends AbstractType
                     'attr'       => [
                         'class'    => 'form-control',
                         'onchange' => 'Mautic.getTotalAttachmentSize();',
+                        'tooltip'  => 'mautic.email.attachments.help',
                     ],
                     'multiple' => true,
                     'expanded' => false,

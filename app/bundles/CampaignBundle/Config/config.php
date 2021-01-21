@@ -196,6 +196,7 @@ return [
                     'mautic.campaign.repository.event',
                     'mautic.campaign.event_executioner',
                     'translator',
+                    'mautic.campaign.repository.lead',
                 ],
             ],
         ],
@@ -598,13 +599,6 @@ return [
                 'tag' => 'console.command',
             ],
         ],
-        'fixtures' => [
-            'mautic.campaign.fixture.campaign' => [
-                'class'    => \Mautic\CampaignBundle\Tests\DataFixtures\Orm\CampaignData::class,
-                'tag'      => \Doctrine\Bundle\FixturesBundle\DependencyInjection\CompilerPass\FixturesCompilerPass::FIXTURE_TAG,
-                'optional' => true,
-            ],
-        ],
         'services' => [
             'mautic.campaign.service.campaign'=> [
                 'class'     => \Mautic\CampaignBundle\Service\Campaign::class,
@@ -612,6 +606,13 @@ return [
                     'mautic.campaign.repository.campaign',
                     'mautic.email.repository.email',
                 ],
+            ],
+        ],
+        'fixtures' => [
+            'mautic.campaign.fixture.campaign' => [
+                'class'    => \Mautic\CampaignBundle\DataFixtures\ORM\CampaignData::class,
+                'tag'      => \Doctrine\Bundle\FixturesBundle\DependencyInjection\CompilerPass\FixturesCompilerPass::FIXTURE_TAG,
+                'optional' => true,
             ],
         ],
     ],
