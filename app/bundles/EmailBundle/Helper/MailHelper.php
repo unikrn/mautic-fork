@@ -418,7 +418,7 @@ class MailHelper
                         $this->attachedAssets[] = $asset->getId();
                         $this->attachFile(
                             $asset->getFilePath(),
-                            $asset->getOriginalFileName(),
+                            $asset->getTitle(),
                             $asset->getMime()
                         );
                     }
