@@ -47,7 +47,7 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface, Au
 
             return $response;
         } else {
-            $redirectUrl = $request->getSession()->get('_security.main.target_path', $this->router->generate('mautic_user_index'));
+            $redirectUrl = $request->getSession()->get('_security.main.target_path', $this->router->generate('mautic_contact_index'));
 
             return new RedirectResponse($redirectUrl);
         }
