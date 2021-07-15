@@ -21,12 +21,12 @@ class FieldList
     /**
      * @var LeadFieldRepository
      */
-    private $leadFieldRepository;
+    protected $leadFieldRepository;
 
     /**
      * @var TranslatorInterface
      */
-    private $translator;
+    protected $translator;
 
     public function __construct(LeadFieldRepository $leadFieldRepository, TranslatorInterface $translator)
     {

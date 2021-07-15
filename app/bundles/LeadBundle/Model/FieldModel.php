@@ -460,7 +460,7 @@ class FieldModel extends FormModel
     /**
      * @var FieldList
      */
-    private $fieldList;
+    protected $fieldList;
 
     /**
      * @var LeadFieldSaver
